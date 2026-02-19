@@ -1,62 +1,320 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>Vincures Privacy Policy</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy Policy for Vincures Pinterest Ads API Application">
-  <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      max-width: 800px;
-      margin: 60px auto;
-      padding: 20px;
-      line-height: 1.8;
-      color: #222;
-    }
-    h1, h2 {
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>月次請求業務 完全管理ダッシュボード</title>
+
+<style>
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",Meiryo,sans-serif;
+  background:#f4f6f9;
+  color:#111827;
+}
+
+header{
+  background:#111827;
+  color:white;
+  padding:30px 50px;
+}
+
+h1{ margin:0; font-size:22px; }
+
+.tabs{
+  display:flex;
+  gap:12px;
+  padding:20px 50px;
+}
+
+.tab{
+  padding:8px 18px;
+  background:#e5e7eb;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+}
+
+.tab.active{
+  background:#2563eb;
+  color:white;
+}
+
+.container{
+  padding:0 50px 50px 50px;
+  overflow-x:auto;
+}
+
+.gantt{
+  min-width:1700px;
+}
+
+.header-days{
+  display:grid;
+  grid-template-columns:360px repeat(24,60px);
+  font-weight:bold;
+}
+
+.header-days div{
+  text-align:center;
+  padding:6px 0;
+}
+
+.day{
+  background:#e5e7eb;
+  border-right:1px solid #d1d5db;
+}
+
+.header-times{
+  display:grid;
+  grid-template-columns:360px repeat(24,60px);
+  font-size:11px;
+  border-bottom:2px solid #d1d5db;
+}
+
+.header-times div{
+  text-align:center;
+  padding:4px 0;
+  background:#f3f4f6;
+}
+
+.row{
+  display:grid;
+  grid-template-columns:360px repeat(24,60px);
+  align-items:center;
+  margin:6px 0;
+}
+
+.task{
+  font-size:12px;
+  line-height:1.4;
+}
+
+.meta{
+  font-size:10px;
+  color:#6b7280;
+}
+
+.bar{
+  height:18px;
+  border-radius:4px;
+}
+
+.blue{ background:#3b82f6; }
+.green{ background:#10b981; }
+.orange{ background:#f59e0b; }
+.red{ background:#ef4444; }
+.purple{ background:#8b5cf6; }
+
+.section{ display:none; }
+.section.active{ display:block; }
+
+.checklist{
+  margin-top:40px;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+}
+
+.checklist h3{
+  margin-top:0;
+}
+
+.check-item{
+  margin-bottom:6px;
+  font-size:13px;
+}
+</style>
 </head>
+
 <body>
 
-<h1>Privacy Policy</h1>
+<header>
+<h1>月次請求業務 完全管理ダッシュボード</h1>
+</header>
 
-<p>Vincures (hereinafter referred to as "we", "our", or "us") operates an application that integrates with the Pinterest Ads API for advertising performance reporting and analytics purposes.</p>
+<div class="tabs">
+  <div class="tab active" onclick="showTab('budget',this)">予算案件</div>
+  <div class="tab" onclick="showTab('result',this)">成果案件</div>
+  <div class="tab" onclick="showTab('ai',this)">Ai案件</div>
+</div>
 
-<h2>1. Information We Collect</h2>
-<p>We collect advertising performance data from authorized Pinterest Ads accounts, including but not limited to:</p>
-<ul>
-  <li>Advertising spend</li>
-  <li>Impressions</li>
-  <li>Clicks</li>
-  <li>Conversions</li>
-  <li>Other advertising performance metrics</li>
-</ul>
-<p>We do not collect personally identifiable information from Pinterest users.</p>
+<div class="container">
+<div class="gantt">
 
-<h2>2. Purpose of Use</h2>
-<p>The collected data is used strictly for:</p>
-<ul>
-  <li>Advertising performance analysis</li>
-  <li>Internal reporting</li>
-  <li>Client reporting</li>
-</ul>
+<!-- 営業日 -->
+<div class="header-days">
+  <div></div>
+  <div class="day" style="grid-column:2/8;">1営業日目</div>
+  <div class="day" style="grid-column:8/14;">2営業日目</div>
+  <div class="day" style="grid-column:14/20;">3営業日目</div>
+  <div class="day" style="grid-column:20/26;">4営業日目</div>
+</div>
 
-<h2>3. Data Sharing</h2>
-<p>We do not sell, distribute, or share collected data with third parties.</p>
+<!-- 時間 -->
+<div class="header-times">
+  <div></div>
+  <div>11</div><div>13</div><div>15</div><div>17</div><div>19</div><div>21</div>
+  <div>11</div><div>13</div><div>15</div><div>17</div><div>19</div><div>21</div>
+  <div>11</div><div>13</div><div>15</div><div>17</div><div>19</div><div>21</div>
+  <div>11</div><div>13</div><div>15</div><div>17</div><div>19</div><div>21</div>
+</div>
 
-<h2>4. Data Security</h2>
-<p>We implement appropriate security measures to protect collected data.</p>
+<!-- ===================== 予算案件 ===================== -->
 
-<h2>5. Contact Information</h2>
-<p>If you have any questions regarding this Privacy Policy, please contact us at:</p>
-<p><strong>info@vincures.co.jp</strong></p>
+<div id="budget" class="section active">
 
-<hr>
-<p>Business Name: Vincures</p>
-<p>Last Updated: 2026-02-19</p>
+<div class="row">
+  <div class="task">
+    Slackスレッド作成／フォルダ作成<br>
+    <span class="meta">責任：数値担当者／宮田｜担当：数値担当者／宮田</span>
+  </div>
+  <div class="bar blue" style="grid-column:2/5;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    媒体CSV出力・格納<br>
+    <span class="meta">責任：運用者｜担当：運用者</span>
+  </div>
+  <div class="bar blue" style="grid-column:5/9;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    差異確認（ALL_Daily）<br>
+    <span class="meta">責任：数値担当者｜担当：運用者</span>
+  </div>
+  <div class="bar green" style="grid-column:9/14;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    コストFix報告<br>
+    <span class="meta">責任：数値担当者</span>
+  </div>
+  <div class="bar orange" style="grid-column:14/16;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    請求書作成・送付<br>
+    <span class="meta">責任：宮野</span>
+  </div>
+  <div class="bar red" style="grid-column:17/22;"></div>
+</div>
+
+</div>
+
+<!-- ===================== 成果案件 ===================== -->
+
+<div id="result" class="section">
+
+<div class="row">
+  <div class="task">
+    CATS/AFAD/管理画面成果出力<br>
+    <span class="meta">責任：数値担当者／宮田</span>
+  </div>
+  <div class="bar blue" style="grid-column:2/7;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    件数差異確認／否認反映<br>
+    <span class="meta">責任：数値担当者</span>
+  </div>
+  <div class="bar green" style="grid-column:7/12;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    売上Fix報告<br>
+    <span class="meta">責任：数値担当者</span>
+  </div>
+  <div class="bar purple" style="grid-column:12/14;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    コスト取得・差異確認<br>
+    <span class="meta">責任：数値担当者／運用者</span>
+  </div>
+  <div class="bar orange" style="grid-column:14/20;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    請求書作成・送付<br>
+    <span class="meta">責任：宮野</span>
+  </div>
+  <div class="bar red" style="grid-column:20/24;"></div>
+</div>
+
+</div>
+
+<!-- ===================== Ai案件 ===================== -->
+
+<div id="ai" class="section">
+
+<div class="row">
+  <div class="task">
+    CSV＋スクショ取得<br>
+    <span class="meta">責任：運用者</span>
+  </div>
+  <div class="bar blue" style="grid-column:2/7;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    スクショ照合／三重差異確認<br>
+    <span class="meta">責任：数値担当者</span>
+  </div>
+  <div class="bar orange" style="grid-column:7/15;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    社内外確定報告<br>
+    <span class="meta">責任：数値担当者</span>
+  </div>
+  <div class="bar purple" style="grid-column:15/18;"></div>
+</div>
+
+<div class="row">
+  <div class="task">
+    請求書作成・送付<br>
+    <span class="meta">責任：宮野</span>
+  </div>
+  <div class="bar red" style="grid-column:18/24;"></div>
+</div>
+
+</div>
+
+</div>
+
+<!-- ===================== チェックリスト ===================== -->
+
+<div class="checklist">
+<h3>チェックリスト</h3>
+<div class="check-item"><input type="checkbox"> Slackスレッド作成済</div>
+<div class="check-item"><input type="checkbox"> データ出力完了</div>
+<div class="check-item"><input type="checkbox"> 差異確認完了</div>
+<div class="check-item"><input type="checkbox"> Fix報告済</div>
+<div class="check-item"><input type="checkbox"> 請求書作成済</div>
+<div class="check-item"><input type="checkbox"> 社外送付完了</div>
+</div>
+
+</div>
+
+<script>
+function showTab(id,el){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  el.classList.add('active');
+}
+</script>
 
 </body>
 </html>
